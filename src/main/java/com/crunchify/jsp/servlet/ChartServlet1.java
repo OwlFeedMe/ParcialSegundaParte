@@ -95,8 +95,8 @@ public class ChartServlet1 extends HttpServlet {
 
         JFreeChart chart = ChartFactory.createBarChart(
                 "Kilos de miel por Colmena", // chart title
-                "Kilos", // domain axis label
-                "Colmenas", // range axis label
+                "Colmenas", // domain axis label
+                "Kilos", // range axis label
                 dataset, // data
                 PlotOrientation.VERTICAL, // the plot orientation
                 false, // include legend
