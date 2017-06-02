@@ -37,6 +37,7 @@ import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DatasetUtilities;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.ui.TextAnchor;
@@ -86,18 +87,16 @@ public class ChartServlet1 extends HttpServlet {
             data[0][j] = arr.get(i).getKilosdeiel();
             j++;
         }
-
-        CategoryDataset category = DatasetUtilities.createCategoryDataset(
-                "Series",
-                "Colmena",
-                data
-        );
+DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.addValue(25.0, "Colmena", "Kilos");   
+        dataset.addValue(34.0, "Colmena", "Kilos");   
+        
 
         JFreeChart chart = ChartFactory.createBarChart(
                 "Kilos de miel por Colmena", // chart title
                 "Area", // domain axis label
                 "Elementos", // range axis label
-                category, // data
+                dataset, // data
                 PlotOrientation.VERTICAL, // the plot orientation
                 false, // include legend
                 true,
