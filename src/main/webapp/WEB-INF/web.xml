@@ -23,7 +23,10 @@
         <servlet-class>com.crunchify.jsp.servlet.ChartServlet</servlet-class>
     </servlet>
        
-    
+    <servlet>
+        <servlet-name>ChartServlet2</servlet-name>
+        <servlet-class>com.crunchify.jsp.servlet.ChartServlet2</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Hello</servlet-name>
         <url-pattern>/CrunchifyServlet</url-pattern>
