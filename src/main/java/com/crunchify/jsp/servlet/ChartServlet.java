@@ -33,6 +33,7 @@ import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.labels.ItemLabelAnchor;
 import org.jfree.chart.labels.ItemLabelPosition;
 import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.data.category.CategoryDataset;
@@ -61,10 +62,10 @@ public class ChartServlet extends HttpServlet {
 		OutputStream outputStream = response.getOutputStream();
        
 		
-                JFreeChart chart2 = getChart2();
+                JFreeChart chart2 = getChart();
            
             
-                chart2 = getChart2();
+                chart2 = getChart();
                 int width = 500;
 		int height = 350;
                 ChartUtilities.writeChartAsPNG(outputStream, chart2, width, height);
@@ -153,26 +154,21 @@ public class ChartServlet extends HttpServlet {
         double[][] data = new double[1][arr.size()];
         int j=0;
         for (int i = 0; i < arr.size(); i++) {
-            data[0][j] = arr.get(i).getPcalimento();
-             dataset.setValue("Colmena",arr.get(i).getPcalimento());
-            j++;
+            dataset.setValue(String.valueOf(arr.get(i).getId_colmena()), arr.get(i).getPcalimento());
         }
-            
-               
-                
-//          
-            
-		boolean legend = true;
-		boolean tooltips = false;
-		boolean urls = false;
-
-		JFreeChart chart = ChartFactory.createPieChart("Informacion Panal Colmena", dataset, legend, tooltips, urls);
-
-		chart.setBorderPaint(Color.GREEN);
-		chart.setBorderStroke(new BasicStroke(5.0f));
-		chart.setBorderVisible(true);
-
-		return chart;
+        
+        JFreeChart chart = ChartFactory.createPieChart(
+            "Porcentaje de paneles con Alimentos",  // chart title
+            dataset,             // dataset
+            true,                // include legend
+            true,
+            false
+        );
+        PiePlot plot = (PiePlot) chart.getPlot();
+        plot.setNoDataMessage("No data available");
+        plot.setExplodePercent(1, 0.30);
+       
+        return chart;
 	}
 
 }
