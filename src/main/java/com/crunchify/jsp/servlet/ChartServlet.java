@@ -59,6 +59,7 @@ public class ChartServlet extends HttpServlet {
             try {
         	response.setContentType("image/png");
 		OutputStream outputStream = response.getOutputStream();
+                OutputStream outputStream2 = response.getOutputStream();
 		JFreeChart chart = getChart();
            
             
@@ -67,9 +68,10 @@ public class ChartServlet extends HttpServlet {
            
             
                 chart2 = getChart2();
-                int width = 250;
-		int height = 350;ChartUtilities.writeChartAsPNG(outputStream, chart2, width, height);
-		ChartUtilities.writeChartAsPNG(outputStream, chart, width*2, height);
+                int width = 500;
+		int height = 350;
+                ChartUtilities.writeChartAsPNG(outputStream, chart2, width, height);
+		ChartUtilities.writeChartAsPNG(outputStream2, chart, width, height);
                 
             } catch (URISyntaxException ex) {
                 Logger.getLogger(ChartServlet.class.getName()).log(Level.SEVERE, null, ex);
