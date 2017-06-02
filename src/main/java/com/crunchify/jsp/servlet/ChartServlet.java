@@ -150,10 +150,11 @@ public class ChartServlet extends HttpServlet {
         int j=0;
         for (int i = 0; i < arr.size(); i++) {
             data[0][j] = arr.get(i).getPcalimento();
+             dataset.setValue("Colmena",arr.get(i).getPcalimento());
             j++;
         }
             
-                dataset.setValue("Colmena",123);
+               
                 
 //          
             
