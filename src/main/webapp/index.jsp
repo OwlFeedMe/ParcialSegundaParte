@@ -19,7 +19,7 @@ body {
 <body>
     <div align="center" style="margin-top: 50px;">
      
-    <img src="ChartServlet"  align="rigth"/>
+    <img src="ChartServlet"  align="right"/>
      <img src="ChartServle2"  align="left"/>
 </body>
 </html>

@@ -64,13 +64,10 @@ public class ChartServlet2 extends HttpServlet {
            
             
                 chart = getChart();
-                JFreeChart chart2 = getChart2();
-           
-            
-                chart2 = getChart2();
+                
                 int width = 500;
 		int height = 350;ChartUtilities.writeChartAsPNG(outputStream, chart, width, height);
-                ChartUtilities.writeChartAsPNG(outputStream, chart2, width, height);
+              
 		
                 
             } catch (URISyntaxException ex) {
