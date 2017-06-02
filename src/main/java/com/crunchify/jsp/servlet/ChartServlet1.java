@@ -100,7 +100,7 @@ public class ChartServlet1 extends HttpServlet {
                 dataset, // data
                 PlotOrientation.VERTICAL, // the plot orientation
                 false, // include legend
-                true,
+                false,
                 false
         );
 
