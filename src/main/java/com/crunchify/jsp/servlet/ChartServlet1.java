@@ -41,11 +41,11 @@ import org.jfree.data.general.DatasetUtilities;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.ui.TextAnchor;
 
-public class ChartServlet2 extends HttpServlet {
+public class ChartServlet1 extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //            try{
 //            response.setContentType("image/png");
 //            OutputStream outputStream = response.getOutputStream();
@@ -57,44 +57,38 @@ public class ChartServlet2 extends HttpServlet {
 //            Logger.getLogger(ChartServlet.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //
-            try {
-        	response.setContentType("image/png");
-		OutputStream outputStream = response.getOutputStream();
-               
-		JFreeChart chart = getChart2();
-           
-            
-                chart = getChart2();
-                
-                int width = 500;
-		int height = 350;ChartUtilities.writeChartAsPNG(outputStream, chart, width, height);
-              
-		
-                
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(ChartServlet2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-		
+        try {
+            response.setContentType("image/png");
+            OutputStream outputStream = response.getOutputStream();
 
-	}
-        
-        
-        
+            JFreeChart chart = getChart2();
+
+            chart = getChart2();
+
+            int width = 500;
+            int height = 350;
+            ChartUtilities.writeChartAsPNG(outputStream, chart, width, height);
+
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(ChartServlet1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     public JFreeChart getChart2() throws URISyntaxException {
 
         List<Recoleccion> arr = new LinkedList();
-       DatosDao vis = new DatosDao();
-        arr =   vis.findAll2();
+        DatosDao vis = new DatosDao();
+        arr = vis.findAll2();
         double[][] data = new double[1][arr.size()];
-        int j=0;
+        int j = 0;
         for (int i = 0; i < arr.size(); i++) {
-            data[0][j] = arr.get(i).getKilosdeiel() ;
+            data[0][j] = arr.get(i).getKilosdeiel();
             j++;
         }
 
         CategoryDataset category = DatasetUtilities.createCategoryDataset(
-                "Series",       
+                "Series",
                 "Colmena",
                 data
         );
@@ -130,7 +124,7 @@ public class ChartServlet2 extends HttpServlet {
         plot.setRenderer(renderer);
 
         // change the margin at the top of the range axis...
-       org.jfree.chart.axis.ValueAxis rangAxis = plot.getRangeAxis();
+        org.jfree.chart.axis.ValueAxis rangAxis = plot.getRangeAxis();
         rangAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
         rangAxis.setLowerMargin(0.15);
         rangAxis.setUpperMargin(0.15);
@@ -138,37 +132,33 @@ public class ChartServlet2 extends HttpServlet {
         return chart;
 
     }
-        
-        
-        
-        
 
-	public JFreeChart getChart() throws URISyntaxException {
-		
-                DefaultPieDataset dataset = new DefaultPieDataset();
-	        //Crear la capa de servicios que se enlace con el DAO
-                
-                List<Colmena> arr = new LinkedList();
-       DatosDao vis = new DatosDao();
-        arr =   vis.findAll3();
+    public JFreeChart getChart() throws URISyntaxException {
+
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        //Crear la capa de servicios que se enlace con el DAO
+
+        List<Colmena> arr = new LinkedList();
+        DatosDao vis = new DatosDao();
+        arr = vis.findAll3();
         double[][] data = new double[1][arr.size()];
-        int j=0;
+        int j = 0;
         for (int i = 0; i < arr.size(); i++) {
             dataset.setValue(String.valueOf(arr.get(i).getId_colmena()), arr.get(i).getPcalimento());
         }
-        
+
         JFreeChart chart = ChartFactory.createPieChart(
-            "Porcentaje de paneles con Alimentos",  // chart title
-            dataset,             // dataset
-            true,                // include legend
-            true,
-            false
+                "Porcentaje de paneles con Alimentos", // chart title
+                dataset, // dataset
+                true, // include legend
+                true,
+                false
         );
         PiePlot plot = (PiePlot) chart.getPlot();
         plot.setNoDataMessage("No data available");
         plot.setExplodePercent(1, 0.30);
-       
+
         return chart;
-	}
+    }
 
 }
