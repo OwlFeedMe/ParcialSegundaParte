@@ -81,15 +81,16 @@ public class ChartServlet1 extends HttpServlet {
         List<Recoleccion> arr = new LinkedList();
         DatosDao vis = new DatosDao();
         arr = vis.findAll2();
-        double[][] data = new double[1][arr.size()];
-        int j = 0;
+      
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (int i = 0; i < arr.size(); i++) {
-            data[0][j] = arr.get(i).getKilosdeiel();
-            j++;
+            
+        dataset.addValue(arr.get(i).getKilosdeiel(), String.valueOf(arr.get(i).getId_colmena()), "Colmena ID:"+String.valueOf(arr.get(i).getId_colmena()));   
+           
+           
         }
-DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(25.0, "Colmena", "Kilos");   
-        dataset.addValue(34.0, "Colmena", "Kilos");   
+
+        
         
 
         JFreeChart chart = ChartFactory.createBarChart(
