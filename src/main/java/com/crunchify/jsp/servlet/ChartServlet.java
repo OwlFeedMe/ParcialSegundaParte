@@ -68,9 +68,9 @@ public class ChartServlet extends HttpServlet {
             
                 chart2 = getChart2();
                 int width = 500;
-		int height = 350;
+		int height = 350;ChartUtilities.writeChartAsPNG(outputStream, chart2, width, height);
 		ChartUtilities.writeChartAsPNG(outputStream, chart, width, height);
-                ChartUtilities.writeChartAsPNG(outputStream, chart2, width, height);
+                
             } catch (URISyntaxException ex) {
                 Logger.getLogger(ChartServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
