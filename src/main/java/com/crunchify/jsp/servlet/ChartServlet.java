@@ -8,6 +8,7 @@ package com.crunchify.jsp.servlet;
 import edu.co.sergio.mundo.dao.DatosDao;
 import edu.co.sergio.mundo.vo.Visitas_Tecnicas;
 import edu.co.sergio.mundo.vo.Recoleccion;
+import edu.co.sergio.mundo.vo.Colmena;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Paint;
@@ -61,7 +62,7 @@ public class ChartServlet extends HttpServlet {
 		JFreeChart chart = getChart();
            
             
-                chart = getChart2();
+                chart = getChart();
                 int width = 500;
 		int height = 350;
 		ChartUtilities.writeChartAsPNG(outputStream, chart, width, height);
@@ -75,7 +76,7 @@ public class ChartServlet extends HttpServlet {
         
         
         
-    public JFreeChart getChart2() throws URISyntaxException {
+    public JFreeChart getChar2() throws URISyntaxException {
 
         List<Recoleccion> arr = new LinkedList();
        DatosDao vis = new DatosDao();
@@ -137,20 +138,24 @@ public class ChartServlet extends HttpServlet {
         
         
 
-	public JFreeChart getChart() {
+	public JFreeChart getChart() throws URISyntaxException {
 		
                 DefaultPieDataset dataset = new DefaultPieDataset();
 	        //Crear la capa de servicios que se enlace con el DAO
                 
-                DatosDao dep=new DatosDao();
-                LinkedList <Visitas_Tecnicas>c=(LinkedList) dep.findAll();
-               
+                List<Colmena> arr = new LinkedList();
+       DatosDao vis = new DatosDao();
+        arr =   vis.findAll3();
+        double[][] data = new double[1][arr.size()];
+        int j=0;
+        for (int i = 0; i < arr.size(); i++) {
+            data[0][j] = arr.get(i).getPcalimento();
+            j++;
+        }
             
-                dataset.setValue("verga",123);
+                dataset.setValue("Colmena",123);
                 
-//            for (int i = 0; i < c.size(); i++) {
-//                dataset.setValue(c.get(i).getTecnico(),c.get(i).getPanalesconaimento());
-//            }
+//          
             
 		boolean legend = true;
 		boolean tooltips = false;
