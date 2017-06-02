@@ -63,9 +63,14 @@ public class ChartServlet extends HttpServlet {
            
             
                 chart = getChart();
+                JFreeChart chart2 = getChart2();
+           
+            
+                chart2 = getChart2();
                 int width = 500;
 		int height = 350;
 		ChartUtilities.writeChartAsPNG(outputStream, chart, width, height);
+                ChartUtilities.writeChartAsPNG(outputStream, chart2, width, height);
             } catch (URISyntaxException ex) {
                 Logger.getLogger(ChartServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -76,7 +81,7 @@ public class ChartServlet extends HttpServlet {
         
         
         
-    public JFreeChart getChar2() throws URISyntaxException {
+    public JFreeChart getChart2() throws URISyntaxException {
 
         List<Recoleccion> arr = new LinkedList();
        DatosDao vis = new DatosDao();
