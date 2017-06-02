@@ -26,7 +26,7 @@ public class CreateDataBase {
                 stmt.executeUpdate(sql);
                 
             } catch (URISyntaxException ex) {
-                Logger.getLogger(Visitas_tecnicasDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(DatosDao.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
              Logger.getLogger(CreateDataBase.class.getName()).log(Level.SEVERE, null, ex);
          }

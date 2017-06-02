@@ -5,23 +5,24 @@
  */
 package edu.co.sergio.mundo.vo;
 
+import java.sql.Date;
+
 /**
  *
  * @author Labing
  */
 public class Recoleccion {
     
-String fecha ;
+java.sql.Date fecha ;
 String recolector; 
 int id_colmena ;
 int kilosdeiel ;
-boolean aprobacion ;
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -49,14 +50,8 @@ boolean aprobacion ;
         this.kilosdeiel = kilosdeiel;
     }
 
-    public boolean isAprobacion() {
-        return aprobacion;
-    }
 
-    public void setAprobacion(boolean aprobacion) {
-        this.aprobacion = aprobacion;
-    }
-
+   
 
 
 

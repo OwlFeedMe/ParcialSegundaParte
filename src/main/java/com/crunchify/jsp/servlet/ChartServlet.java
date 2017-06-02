@@ -5,7 +5,7 @@
  */
 package com.crunchify.jsp.servlet;
 
-import edu.co.sergio.mundo.dao.Visitas_tecnicasDao;
+import edu.co.sergio.mundo.dao.DatosDao;
 import edu.co.sergio.mundo.vo.Visitas_Tecnicas;
 import edu.co.sergio.mundo.vo.Recoleccion;
 import java.awt.BasicStroke;
@@ -78,7 +78,7 @@ public class ChartServlet extends HttpServlet {
     public JFreeChart getChart() throws URISyntaxException {
 
         List<Recoleccion> arr = new LinkedList();
-       Visitas_tecnicasDao vis = new Visitas_tecnicasDao();
+       DatosDao vis = new DatosDao();
         arr =   vis.findAll2();
         double[][] data = new double[1][arr.size()];
         int j=0;
