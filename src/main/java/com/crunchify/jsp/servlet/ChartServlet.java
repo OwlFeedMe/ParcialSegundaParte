@@ -143,7 +143,7 @@ public class ChartServlet extends HttpServlet {
         double[][] data = new double[1][arr.size()];
         int j = 0;
         for (int i = 0; i < arr.size(); i++) {
-            dataset.setValue(String.valueOf(arr.get(i).getId_colmena()), arr.get(i).getPcalimento());
+            dataset.setValue(String.valueOf("Colmena ID: "+arr.get(i).getId_colmena()), arr.get(i).getPcalimento());
         }
 
         JFreeChart chart = ChartFactory.createPieChart(
